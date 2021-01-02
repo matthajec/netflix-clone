@@ -51,6 +51,7 @@ export const Text = styled.p`
   font-size: 19px;
   color: white;
   text-align: center;
+  font-family: 'netflix-sans';
     
   @media (max-width: 600px) {
     font-size: 16px;
