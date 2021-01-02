@@ -1,24 +1,25 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Home } from './pages'
+import { Home, PageNotFound } from './pages'
+import * as ROUTES from './constants/routes'
 
 export function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/signin">
+        <Route path={ROUTES.SIGN_IN}>
           I will be the signin page
         </Route>
-        <Route path="/signup">
+        <Route path={ROUTES.SIGN_UP}>
           I will be the signup page
         </Route>
-        <Route path="/browse">
+        <Route path={ROUTES.BROWSE}>
           I will be the browse page
         </Route>
-        <Route exact path="/">
+        <Route exact path={ROUTES.HOME}>
           <Home />
         </Route>
         <Route path="/">
-          I will be the 404
+          <PageNotFound />
         </Route>
       </Switch>
     </Router>
