@@ -24,6 +24,9 @@ export const Button = styled.button`
   font-size: 26px;
   border: 0;
   cursor: pointer;
+  border-left: 1px solid #333;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
     
   img {
     margin-left: 10px;
@@ -40,10 +43,12 @@ export const Button = styled.button`
   }
     
   @media (max-width: 1000px) {
+    border: none;
+    border-radius: 2px;
     height: 50px;
     font-size: 16px;
     margin-top: 20px;
-  font-weight: bold;
+    font-weight: bold;
   }
 `
 
@@ -51,7 +56,6 @@ export const Text = styled.p`
   font-size: 19px;
   color: white;
   text-align: center;
-  font-family: 'netflix-sans';
     
   @media (max-width: 600px) {
     font-size: 16px;
@@ -63,12 +67,21 @@ export const InputContainer = styled.div`
   position: relative;
   max-width: 450px;
   width: 100%; 
+  height: 70px;
+  overflow: hidden;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+
+  @media (max-width: 1000px) {
+    border-radius: 2px;
+  }
 `
 
 export const InputLabel = styled.label`
   z-index: 1;
   position: absolute;
   top: 50%;
+  left: 0;
   margin-left: 10px;
   transform: translateY(-50%);
   pointer-events: none;
@@ -82,10 +95,11 @@ export const Input = styled.input`
   width: 100%;
   border: 0;
   padding: 10px 10px 0 10px;
-  height: 70px;
   box-sizing: border-box;
   font-size: 16px;
   outline: 0;
+  height: 100%;
+  left: 0;
 
   &:focus {
     outline: 1px solid #266fa3;
@@ -98,4 +112,7 @@ export const Input = styled.input`
   }
 `
 
-
+export const Break = styled.div`
+  flex-basis: 100%;
+  height: 0;
+`

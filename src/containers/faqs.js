@@ -16,9 +16,10 @@ export default function FaqsContainer() {
         </Accordion.Frame>
 
         <OptForm>
-          <OptForm.Input aria-label="Email" placeholder="Email Address"></OptForm.Input>
-          <OptForm.Button>Try it now</OptForm.Button>
           <OptForm.Text>Ready to watch? Enter your email to create or restart your membership</OptForm.Text>
+          <OptForm.Break />
+          <OptForm.Input aria-label="Email" placeholder="Email Address"></OptForm.Input>
+          <OptForm.Button>GET STARTED</OptForm.Button>
         </OptForm>
       </Accordion>
 

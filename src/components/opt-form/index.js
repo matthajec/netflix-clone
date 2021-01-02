@@ -5,7 +5,8 @@ import {
   Button,
   Text,
   InputContainer,
-  InputLabel
+  InputLabel,
+  Break
 } from './styles/opt-form';
 
 const OptForm = ({ children, ...restProps }) => (
@@ -27,6 +28,10 @@ OptForm.Button = ({ children, ...restProps }) => (
 
 OptForm.Text = ({ children, ...restProps }) => (
   <Text {...restProps}>{children}</Text>
+)
+
+OptForm.Break = ({ ...restProps }) => (
+  <Break {...restProps} />
 )
 
 OptForm.propTypes = {

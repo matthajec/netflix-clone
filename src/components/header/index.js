@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import {
   Background,
   Container,
@@ -6,7 +7,7 @@ import {
   Logo
 } from './styles/header'
 
-const Header = ({ bg = true, children, ...restProps }) => {
+const Header = ({ dontShowOnSmallViewPort = false, bg = true, src, children, ...restProps }) => {
   return bg ? <Background {...restProps}>{children}</Background> : children
 }
 
@@ -23,5 +24,27 @@ Header.Logo = ({ to, src, alt, ...restProps }) => (
 Header.ButtonLink = ({ to, children }) => (
   <ButtonLink to={to}>{children}</ButtonLink>
 )
+
+Header.propTypes = {
+  dontShowOnSmallViewPort: PropTypes.bool,
+  bg: PropTypes.bool,
+  src: PropTypes.string,
+  children: PropTypes.any
+}
+
+Header.Frame.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Header.Logo.propTypes = {
+  to: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired
+}
+
+Header.ButtonLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired
+}
 
 export default Header
