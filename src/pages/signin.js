@@ -5,12 +5,12 @@ import FooterContainer from "../containers/footer";
 import * as ROUTES from '../constants/routes'
 
 export default function Signin() {
+  // eslint-disable-next-line
   const [error, setError] = useState('')
   const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')
 
   const isInvalid = password === '' || emailAddress === ''
-
 
   const handleSignIn = (e) => {
     e.preventDefault()
@@ -41,7 +41,7 @@ export default function Signin() {
               onChange={({ target }) => setPassword(target.value)}
               autoComplete="off"
             />
-            <Form.Sumbit disabled={isInvalid}>Sign In</Form.Sumbit>
+            <Form.Submit disabled={isInvalid}>Sign In</Form.Submit>
           </Form.Base>
 
           <Form.Text>New to Netflix? <Form.Link to={ROUTES.SIGN_UP}>Sign Up now</Form.Link></Form.Text>

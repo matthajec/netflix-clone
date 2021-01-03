@@ -91,18 +91,19 @@ export const InputLabel = styled.label`
 `
 
 export const Input = styled.input`
+  outline: none;
   position: absolute;
   width: 100%;
-  border: 0;
+  border: none;
   padding: 10px 10px 0 10px;
   box-sizing: border-box;
   font-size: 16px;
-  outline: 0;
   height: 100%;
   left: 0;
+  border: 1px solid #8C8C8C;
 
   &:focus {
-    outline: 1px solid #266fa3;
+    border: 1px solid #0771EB;
   }
 
   &:valid + ${InputLabel},

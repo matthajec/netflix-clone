@@ -43,11 +43,43 @@ Form.Input = ({ type = "text", ...restProps }) => (
   <Input type={type} {...restProps} />
 )
 
-Form.Sumbit = ({ children, ...restProps }) => (
+Form.Submit = ({ children, ...restProps }) => (
   <Submit {...restProps}>{children}</Submit>
 )
 
+Form.propTypes = {
+  children: PropTypes.any.isRequired
+}
 
+Form.Base.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Form.Title.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Form.Text.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Form.TextSmall.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Form.Link.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired
+}
+
+Form.Input.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
+}
+
+Form.Submit.propTypes = {
+  children: PropTypes.any.isRequired
+}
 
 
 export default Form

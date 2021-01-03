@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Home, Signin, Signup, PageNotFound } from './pages'
+import { Home, Signin, Signup, Browse, PageNotFound } from './pages'
 import * as ROUTES from './constants/routes'
 
 export function App() {
@@ -13,7 +13,7 @@ export function App() {
           <Signup />
         </Route>
         <Route path={ROUTES.BROWSE}>
-          I will be the browse page
+          <Browse />
         </Route>
         <Route exact path={ROUTES.HOME}>
           <Home />

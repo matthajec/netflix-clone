@@ -1,23 +1,39 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Form } from "../components";
 import HeaderContainer from "../containers/header";
 import FooterContainer from "../containers/footer";
 import * as ROUTES from '../constants/routes'
+import { FirebaseContext } from '../context/firebase';
 
 export default function Signup() {
+  const history = useHistory()
+  const { firebase } = useContext(FirebaseContext)
   const [error, setError] = useState('')
   const [firstName, setFirstName] = useState('')
   const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')
 
-  const isInvalid = firstName || password === '' || emailAddress === ''
-
+  const isInvalid = firstName === '' || password === '' || emailAddress === ''
 
   const handleSignUp = (e) => {
     e.preventDefault()
 
-    // call to firebase and auth
-    // if error populate the error
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(emailAddress, password)
+      .then((result) => {
+        result.user.updateProfile({
+          displayName: firstName,
+          photoURL: Math.floor(Math.random() * 5) + 1
+        })
+          .then(() => {
+            setEmailAddress('')
+            setPassword('')
+            setError('')
+            history.push(ROUTES.BROWSE)
+          })
+      }).catch((error) => setError(error.message))
   }
 
   return (
@@ -48,7 +64,7 @@ export default function Signup() {
               onChange={({ target }) => setPassword(target.value)}
               autoComplete="off"
             />
-            <Form.Sumbit disabled={isInvalid}>Sign Up</Form.Sumbit>
+            <Form.Submit disabled={isInvalid}>Sign Up</Form.Submit>
           </Form.Base>
 
           <Form.Text>Already watching? <Form.Link to={ROUTES.SIGN_IN}>Sign In now</Form.Link></Form.Text>

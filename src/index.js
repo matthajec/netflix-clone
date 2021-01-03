@@ -3,6 +3,7 @@ import { App } from './App'
 import { GlobalStyles } from './global-styles'
 import { FirebaseContext } from './context/firebase'
 
+// eslint-disable-next-line
 const config = {
   apiKey: "AIzaSyB9z8MRXbjgm7RchjakJKUCwINYHXmObRs",
   authDomain: "react-net.firebaseapp.com",
@@ -12,10 +13,10 @@ const config = {
   appId: "1:1014884633958:web:49fc40f6af8d003da9cca7"
 }
 
-const firebase = window.firebase.initializeApp(config)
+window.firebase.initializeApp(config)
 
 ReactDOM.render(
-  <FirebaseContext.Provider value={null}>
+  <FirebaseContext.Provider value={{ firebase: window.firebase }}>
     <GlobalStyles />
     <App />
   </FirebaseContext.Provider>,
