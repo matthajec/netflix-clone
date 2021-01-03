@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Home, PageNotFound } from './pages'
+import { Home, Signin, Signup, PageNotFound } from './pages'
 import * as ROUTES from './constants/routes'
 
 export function App() {
@@ -7,10 +7,10 @@ export function App() {
     <Router>
       <Switch>
         <Route path={ROUTES.SIGN_IN}>
-          I will be the signin page
+          <Signin />
         </Route>
         <Route path={ROUTES.SIGN_UP}>
-          I will be the signup page
+          <Signup />
         </Route>
         <Route path={ROUTES.BROWSE}>
           I will be the browse page

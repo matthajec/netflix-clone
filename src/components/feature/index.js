@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import {
   Container,
   Title,
@@ -15,5 +16,17 @@ Feature.Title = ({ children, ...restProps }) => (
 Feature.SubTitle = ({ children, ...restProps }) => (
   <SubTitle {...restProps}>{children}</SubTitle>
 )
+
+Feature.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Feature.Title.propTypes = {
+  children: PropTypes.string.isRequired
+}
+
+Feature.SubTitle.propTypes = {
+  children: PropTypes.string.isRequired
+}
 
 export default Feature
