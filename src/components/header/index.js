@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
   Background,
@@ -10,7 +11,13 @@ import {
   Text,
   Feature,
   FeatureCallOut,
-  PlayButton
+  PlayButton,
+  Search,
+  SearchIcon,
+  SearchInput,
+  Profile,
+  Picture,
+  Dropdown
 } from './styles/header'
 
 const Header = ({ dontShowOnSmallViewPort = false, bg = true, src, children, ...restProps }) => {
@@ -54,6 +61,39 @@ Header.FeatureCallOut = ({ children, ...restProps }) => (
 Header.PlayButton = ({ children, ...restProps }) => (
   <PlayButton {...restProps}>{children}</PlayButton>
 )
+
+Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps }) {
+  const [searchActive, setSearchActive] = useState(false)
+
+  return (
+    <Search {...restProps}>
+      <SearchIcon onClick={() => setSearchActive(!searchActive)}>
+        <img src="/images/icons/search.png" alt="Search" />
+      </SearchIcon>
+      <SearchInput
+        value={searchTerm}
+        onChange={({ target }) => setSearchTerm(target.value)}
+        placeholder="Search files and series"
+        active={searchActive}
+      />
+    </Search>
+  )
+}
+
+Header.Profile = ({ children, ...restProps }) => (
+  <Profile {...restProps}>{children}</Profile>
+)
+
+Header.Picture = ({ src, ...restProps }) => (
+  <Picture src={`/images/users/${src}.png`} {...restProps} />
+)
+
+Header.Dropdown = ({ children, ...restProps }) => (
+  <Dropdown {...restProps}>{children}</Dropdown>
+)
+
+
+
 
 
 Header.propTypes = {

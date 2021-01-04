@@ -1,5 +1,5 @@
-import { useState, useContext } from 'react'
-import { Header } from '../components'
+import { useState, useContext, useEffect } from 'react'
+import { Header, Loading } from '../components'
 import * as ROUTES from '../constants/routes'
 import { FirebaseContext } from '../context/firebase'
 import SelectProfileContainer from './profiles'
@@ -11,16 +11,25 @@ export default function BrowseContainer() {
   const [profile, setProfile] = useState({})
   const [category, setCategory] = useState('series')
   const [loading, setLoading] = useState(true)
+  const [searchTerm, setSearchTerm] = useState('')
 
   const user = {
     displayName: "Karl",
     photoURL: "1"
   }
 
-  console.log(category)
+  useEffect(() => {
+    const loadTimeout = setTimeout(() => {
+      setLoading(false)
+    }, 2400)
+
+    return () => clearTimeout(loadTimeout)
+  }, [user])
+
 
   return profile.displayName ? (
     <>
+      {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
       <Header src="joker1" dontShowOnSmallViewPort>
         <Header.Frame>
           <Header.Group>
@@ -29,11 +38,25 @@ export default function BrowseContainer() {
               active={category === 'series' ? true : false}
               onClick={() => setCategory('series')}
             >Series</Header.Link>
-
             <Header.Link
               active={category === 'films' ? true : false}
               onClick={() => setCategory('films')}
             >Films</Header.Link>
+          </Header.Group>
+          <Header.Group>
+            <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}></Header.Search>
+            <Header.Profile>
+              <Header.Picture src={user.photoURL} />
+              <Header.Dropdown>
+                <Header.Group>
+                  <Header.Picture src={user.photoURL} />
+                  <Header.Link>{user.displayName}</Header.Link>
+                </Header.Group>
+                <Header.Group>
+                  <Header.Link onClick={() => firebase.auth().signOut()}>Sign Out</Header.Link>
+                </Header.Group>
+              </Header.Dropdown>
+            </Header.Profile>
           </Header.Group>
         </Header.Frame>
 

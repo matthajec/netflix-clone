@@ -1,4 +1,7 @@
 export function seedDatabase(firebase) {
+
+  console.log('Hydrating Firestore')
+
   function getUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
       const piece = (Math.random() * 16) | 0;
