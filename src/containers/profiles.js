@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event'
 import { Header, Profiles } from '../components'
 import * as ROUTES from '../constants/routes'
 

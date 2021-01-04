@@ -13,5 +13,6 @@ This is a netflix clone built with react. It uses Firebase for authentication an
 * Added PropTypes
 * Styling Improvements 
 * Added some animations
+* Improved contrast
 
 ## Challenge(s)
