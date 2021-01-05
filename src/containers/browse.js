@@ -1,13 +1,16 @@
 import { useState, useContext, useEffect } from 'react'
 import Fuse from 'fuse.js'
-import { Header, Loading, Card } from '../components'
+import { Header, Loading, Card, Player } from '../components'
 import * as ROUTES from '../constants/routes'
 import { FirebaseContext } from '../context/firebase'
 import SelectProfileContainer from './profiles'
 import FooterContainer from './footer'
+import { useAuthListener } from '../hooks'
+
 
 export default function BrowseContainer({ slides }) {
   const { firebase } = useContext(FirebaseContext)
+  const authUser = useAuthListener()
 
   const [profile, setProfile] = useState({})
   const [category, setCategory] = useState('series')
@@ -15,9 +18,19 @@ export default function BrowseContainer({ slides }) {
   const [searchTerm, setSearchTerm] = useState('')
   const [slideRows, setSlideRows] = useState([])
 
-  const user = {
-    displayName: "Karl",
+
+
+
+  let user = {
+    displayName: "Alex",
     photoURL: "1"
+  }
+
+  if (authUser.displayName) {
+    user = {
+      displayName: authUser.displayName,
+      photoURL: authUser.photoURL
+    }
   }
 
   useEffect(() => {
@@ -97,7 +110,12 @@ export default function BrowseContainer({ slides }) {
                 </Card.Item>
               ))}
             </Card.Entities>
-            <Card.Feature category={category} />
+            <Card.Feature category={category}>
+              <Player>
+                <Player.Button />
+                <Player.Video />
+              </Player>
+            </Card.Feature>
           </Card>
         ))}
       </Card.Group>

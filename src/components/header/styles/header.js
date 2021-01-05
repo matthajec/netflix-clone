@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Link as RouterLink } from 'react-router-dom'
 
-export const Background = styled.section`
+export const Background = styled.div`
   display: flex;
   flex-direction: column;
   background: linear-gradient(rgba(0, 0, 0, .35), rgba(0, 0, 0, .35)), url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) top left / cover no-repeat;
@@ -11,7 +11,7 @@ export const Background = styled.section`
   }
 `
 
-export const Container = styled.section`
+export const Container = styled.div`
   display: flex;
   margin: 0 56px;
   height: 100px;
@@ -176,7 +176,7 @@ export const Dropdown = styled.div`
   position: absolute;
   background-color: black;
   padding: 10px;
-  width: 100px;
+  width: 120px;
   top: 32px;
   right: 10px;
   

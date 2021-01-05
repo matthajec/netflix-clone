@@ -12,7 +12,11 @@ const config = {
   appId: "1:1014884633958:web:49fc40f6af8d003da9cca7"
 }
 
+
 window.firebase.initializeApp(config)
+
+console.log('Hello World!')
+
 
 ReactDOM.render(
   <FirebaseContext.Provider value={{ firebase: window.firebase }}>

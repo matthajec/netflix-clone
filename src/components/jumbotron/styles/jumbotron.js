@@ -32,7 +32,7 @@ export const Item = styled.div`
     overflow: hidden;
 `
 
-export const Container = styled.section`
+export const Container = styled.main`
     background-color: black;
     
     @media (max-width: 1000px) {

@@ -22,12 +22,27 @@ export default function Signin() {
       .auth()
       .signInWithEmailAndPassword(emailAddress, password)
       .then((result) => {
-        setEmailAddress('')
-        setPassword('')
-        setError('')
         history.push(ROUTES.BROWSE)
       })
-      .catch((error) => setError(error.message))
+      .catch((error) => {
+        setEmailAddress('')
+        setPassword('')
+        setError(error.message)
+      })
+  }
+
+  const handleSignInAnonymous = () => {
+    firebase
+      .auth()
+      .signInAnonymously()
+      .then((result) => {
+        history.push(ROUTES.BROWSE)
+      })
+      .catch((error) => {
+        setEmailAddress('')
+        setPassword('')
+        setError(error.message)
+      })
   }
 
   return (
@@ -54,6 +69,8 @@ export default function Signin() {
             />
             <Form.Submit disabled={isInvalid}>Sign In</Form.Submit>
           </Form.Base>
+          <Form.Submit onClick={handleSignInAnonymous}>Sign In Anonymous</Form.Submit>
+
 
           <Form.Text>New to Netflix? <Form.Link to={ROUTES.SIGN_UP}>Sign Up now</Form.Link></Form.Text>
           <Form.TextSmall>This page is (not) protected by Google reCAPTCHA.</Form.TextSmall>
