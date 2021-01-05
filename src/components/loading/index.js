@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import {
   LockBody,
   ReleaseBody,
@@ -17,5 +18,11 @@ const Loading = ({ src, ...restProps }) => {
 Loading.ReleaseBody = function LoadingReleaseBody() {
   return <ReleaseBody />
 }
+
+Loading.propTypes = {
+  src: PropTypes.string.isRequired
+}
+
+Loading.ReleaseBody.propTypes = {}
 
 export default Loading

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { useState, useContext, createContext } from 'react'
 import ReactDOM from 'react-dom'
 import {
@@ -42,3 +43,11 @@ Player.Button = function PlayerButton({ ...restProps }) {
 
   return <Button onClick={() => setShowPlayer(!showPlayer)}>Play</Button>
 }
+
+Player.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Player.Video.propTypes = {}
+
+Player.Button.propTypes = {}

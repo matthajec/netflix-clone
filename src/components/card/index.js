@@ -1,4 +1,5 @@
 import React, { useState, useContext, createContext } from 'react'
+import PropTypes from 'prop-types'
 
 import {
   Container,
@@ -98,4 +99,47 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
       </Content>
     </Feature>
   ) : null
+}
+
+Card.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Card.Group.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Card.Title.propTypes = {
+  children: PropTypes.string.isRequired
+}
+
+Card.SubTitle.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Card.Text.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Card.Entities.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Card.Meta.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Card.Item.propTypes = {
+  item: PropTypes.object.isRequired,
+  children: PropTypes.any.isRequired
+}
+
+Card.Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired
+}
+
+Card.Feature.propTypes = {
+  category: PropTypes.string.isRequired,
+  children: PropTypes.any
 }

@@ -74,10 +74,10 @@ export default function BrowseContainer({ slides }) {
           <Header.Group>
             <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}></Header.Search>
             <Header.Profile>
-              <Header.Picture src={user.photoURL} />
+              <Header.Picture src={user.photoURL} alt="profile picture" />
               <Header.Dropdown>
                 <Header.Group>
-                  <Header.Picture src={user.photoURL} />
+                  <Header.Picture src={user.photoURL} alt="profile picture" />
                   <Header.Link>{user.displayName}</Header.Link>
                 </Header.Group>
                 <Header.Group>

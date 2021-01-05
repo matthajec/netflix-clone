@@ -84,7 +84,7 @@ Header.Profile = ({ children, ...restProps }) => (
   <Profile {...restProps}>{children}</Profile>
 )
 
-Header.Picture = ({ src, ...restProps }) => (
+Header.Picture = ({ src, alt, ...restProps }) => (
   <Picture src={`/images/users/${src}.png`} {...restProps} />
 )
 
@@ -107,6 +107,10 @@ Header.Frame.propTypes = {
   children: PropTypes.any.isRequired
 }
 
+Header.Group.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
 Header.Logo.propTypes = {
   to: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
@@ -115,11 +119,45 @@ Header.Logo.propTypes = {
 
 Header.ButtonLink.propTypes = {
   to: PropTypes.string.isRequired,
-  children: PropTypes.any.isRequired
+  children: PropTypes.string.isRequired
 }
 
 Header.Link.propTypes = {
   active: PropTypes.bool,
+  children: PropTypes.any.isRequired
+}
+
+Header.Text.propTypes = {
+  children: PropTypes.string.isRequired
+}
+
+Header.Feature.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Header.FeatureCallOut.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Header.PlayButton.propTypes = {
+  children: PropTypes.string.isRequired
+}
+
+Header.Search.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+  setSearchTerm: PropTypes.func.isRequired
+}
+
+Header.Profile.propTypes = {
+  children: PropTypes.any.isRequired
+}
+
+Header.Picture.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired
+}
+
+Header.Dropdown.propTypes = {
   children: PropTypes.any.isRequired
 }
 

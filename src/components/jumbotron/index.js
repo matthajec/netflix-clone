@@ -51,11 +51,11 @@ Jumbotron.Pane.propTypes = {
 }
 
 Jumbotron.Title.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.any.isRequired
 }
 
 Jumbotron.SubTitle.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.any.isRequired
 }
 
 Jumbotron.Image.propTypes = {

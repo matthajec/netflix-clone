@@ -39,15 +39,15 @@ OptForm.propTypes = {
 }
 
 OptForm.Input.propTypes = {
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string.isRequired
 }
 
 OptForm.Button.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any.isRequired
 }
 
 OptForm.Text.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.any.isRequired
 }
 
 export default OptForm
