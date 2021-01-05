@@ -18,7 +18,7 @@ export default function SelectProfileContainer({ user, setProfile }) {
               photoURL: user.photoURL
             })}
           >
-            <Profiles.Picture src={user.photoURL} />
+            <Profiles.Picture src={user.photoURL} alt={user.displayName} />
             <Profiles.Name>{user.displayName}</Profiles.Name>
           </Profiles.User>
         </Profiles.List>

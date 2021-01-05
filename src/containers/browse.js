@@ -1,17 +1,19 @@
 import { useState, useContext, useEffect } from 'react'
-import { Header, Loading } from '../components'
+import Fuse from 'fuse.js'
+import { Header, Loading, Card } from '../components'
 import * as ROUTES from '../constants/routes'
 import { FirebaseContext } from '../context/firebase'
 import SelectProfileContainer from './profiles'
 import FooterContainer from './footer'
 
-export default function BrowseContainer() {
+export default function BrowseContainer({ slides }) {
   const { firebase } = useContext(FirebaseContext)
 
   const [profile, setProfile] = useState({})
   const [category, setCategory] = useState('series')
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
+  const [slideRows, setSlideRows] = useState([])
 
   const user = {
     displayName: "Karl",
@@ -26,6 +28,19 @@ export default function BrowseContainer() {
     return () => clearTimeout(loadTimeout)
   }, [user])
 
+  useEffect(() => {
+    setSlideRows(slides[category])
+  }, [slides, category])
+
+  useEffect(() => {
+    const fuse = new Fuse(slideRows, { keys: ['data.description', 'data.title', 'data.genre'] })
+    const results = fuse.search(searchTerm).map(({ item }) => item)
+    if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
+      setSlideRows(results)
+    } else {
+      setSlideRows(slides[category])
+    }
+  }, [searchTerm])
 
   return profile.displayName ? (
     <>
@@ -66,6 +81,26 @@ export default function BrowseContainer() {
           <Header.PlayButton>Play</Header.PlayButton>
         </Header.Feature>
       </Header>
+
+      <Card.Group>
+        {slideRows.map((slideItem) => (
+          <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
+            <Card.Title>{slideItem.title}</Card.Title>
+            <Card.Entities>
+              {slideItem.data.map((item) => (
+                <Card.Item key={item.docId} item={item}>
+                  <Card.Image alt={item.title} src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} />
+                  <Card.Meta>
+                    <Card.SubTitle>{item.title}</Card.SubTitle>
+                    <Card.Text>{item.description}</Card.Text>
+                  </Card.Meta>
+                </Card.Item>
+              ))}
+            </Card.Entities>
+            <Card.Feature category={category} />
+          </Card>
+        ))}
+      </Card.Group>
       <FooterContainer />
     </>
   ) : (
