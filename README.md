@@ -10,6 +10,7 @@ It was a tutorial from [scrimba](scrimba.com), however due to Scrimba's interact
 * PropTypes
 * Styled Components
 * React Router DOM
+* Fuse.js (fuzzy search)
 
 ## How I improved on the tutorial
 * Added PropTypes
