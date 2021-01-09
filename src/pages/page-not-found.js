@@ -1,5 +1,10 @@
+import Feature from '../components/feature'
+
 export default function PageNotFound() {
   return (
-    <h1>404: The requested resource could not be found</h1>
+    <Feature>
+      <Feature.Title>404</Feature.Title>
+      <Feature.SubTitle>The requested page does not exist</Feature.SubTitle>
+    </Feature>
   )
 }
