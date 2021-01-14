@@ -11,7 +11,7 @@ export default function Signup() {
   const { firebase } = useContext(FirebaseContext)
   const [error, setError] = useState('')
   const [firstName, setFirstName] = useState('')
-  const [emailAddress, setEmailAddress] = useState('')
+  const [emailAddress, setEmailAddress] = useState(history.location.state ? history.location.state.value : '')
   const [password, setPassword] = useState('')
 
   const isInvalid = firstName === '' || password === '' || emailAddress === ''

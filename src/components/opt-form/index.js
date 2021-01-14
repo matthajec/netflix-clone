@@ -1,4 +1,6 @@
 import { useState, useContext, createContext } from 'react'
+import { useHistory } from 'react-router-dom'
+import * as ROUTES from '../../constants/routes'
 import PropTypes from 'prop-types'
 import {
   Container,
@@ -12,23 +14,31 @@ import {
 
 const OptFormContext = createContext()
 
-const OptForm = ({ children, ...restProps }) => {
+const OptForm = function OptForm({ children, redirectTo, ...restProps }) {
   const [value, setValue] = useState('')
+  const history = useHistory()
+
+  const onSubmit = e => {
+    e.preventDefault()
+    history.push(ROUTES.SIGN_UP, { value: value })
+  }
 
   return (
-    <OptFormContext.Provider value={value, setValue}>
-      <Container {...restProps}>{children}</Container>
+    <OptFormContext.Provider value={{ value, setValue }}>
+      <Container onSubmit={onSubmit} {...restProps}>{children}</Container>
     </OptFormContext.Provider>
   )
 }
 
-OptForm.Input = ({ placeholder, ...restProps }) => (
-
-  <InputContainer >
-    <Input required={true} {...restProps} />
-    <InputLabel>{placeholder}</InputLabel>
-  </InputContainer>
-)
+OptForm.Input = function OptFormInput({ placeholder, ...restProps }) {
+  const { value, setValue } = useContext(OptFormContext)
+  return (
+    <InputContainer >
+      <Input required={true} value={value} onChange={({ target }) => setValue(target.value)} {...restProps} />
+      <InputLabel>{placeholder}</InputLabel>
+    </InputContainer>
+  )
+}
 
 OptForm.Button = ({ children, ...restProps }) => (
   <Button {...restProps}>
@@ -45,7 +55,8 @@ OptForm.Break = ({ ...restProps }) => (
 )
 
 OptForm.propTypes = {
-  children: PropTypes.any.isRequired
+  children: PropTypes.any.isRequired,
+  redirectTo: PropTypes.string
 }
 
 OptForm.Input.propTypes = {
