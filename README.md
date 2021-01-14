@@ -3,7 +3,7 @@
 ## Description
 This is a netflix clone built with react. It uses Firebase for authentication and to store data. There's a landing page, a sign in/sign up page, and a browse page.
 
-It was a tutorial from [scrimba](scrimba.com), however due to Scrimba's interactive nature most of the work was done as challenges 
+It was a tutorial from [scrimba](scrimba.com), however due to Scrimba's interactive nature most of the work was done as challenges and I improved on the tutorial (more about that below)
  
 ## Framework(s)/Package(s)
 * ReactJS
@@ -14,7 +14,7 @@ It was a tutorial from [scrimba](scrimba.com), however due to Scrimba's interact
 
 ## How I improved on the tutorial
 * Added PropTypes
-* Various minor styling improvements, such as impoving contrast by darkening backgrounds with CSS and stopping elements links that change size on hover from shifting other elements.
+* Various minor styling improvements, such as impoving contrast by darkening backgrounds with CSS and stopping elements that change font sizes on hover from shifting other elements.
 * Made the HTML slightly more semantic
 * Added some animations
 * Improving accessibility, adding alts to all images and labels or aria-labels to all inputs.
@@ -35,9 +35,10 @@ It was a tutorial from [scrimba](scrimba.com), however due to Scrimba's interact
 * To use context more often (lots of times I tried to avoid using context except for large, application wide data, but I realize that it can be an imporant tool for smaller things, esspecially when creating modular components)
 * Ways the think more dynamically, creating things in such a way that they can be more easily customized and reused with the same code
 * Passing state through react-router-dom
+* Pattern of creating components that return null but run some function
 
 ## Challenge(s)
-* Locking down the database. By default all writes were blocked and all reads were allowed, this isn't what you want from something like Netflix. To fix it I watched a video on Firebase Security Rules and then a video on Common Expression Language in the context of security, this allowed me to come up with my security rules. 
+* Locking down the database. By default all writes were blocked and all reads were allowed, this isn't what you want from something like Netflix. To fix it I watched a video on Firebase Security Rules and then a video on Common Expression Language, this allowed me to come up with my security rules. 
 
     This (below) says for all documents allow a read operation if the ```request.auth != null```, blocking unauthenticated users from accessing data. It then says to allow write operations if the ```request.auth.uid == 'my uuid here'```, only allowing operations from me, since that is my UID.
 
@@ -63,7 +64,7 @@ It was a tutorial from [scrimba](scrimba.com), however due to Scrimba's interact
           return <h1>{myValue}</h1>
         }
 
-  I ended figuring out that in order to use hooks inside of a component like this I needed to declare it as a normal function component, like so:
+  I ended up figuring out that in order to use hooks inside of a component like this I needed to declare it as a normal function component, like so:
 
         Component.CompoundComponent = function ComponentCompoundComponent() {
           const [ myValue ] = useState('hello world!')
