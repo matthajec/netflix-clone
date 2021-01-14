@@ -10,7 +10,7 @@ import {
   Frame
 } from './styles/accordion'
 
-const ToggleContext = createContext();
+const ToggleContext = createContext()
 
 const Accordion = ({ children, ...restProps }) => (
   <Container {...restProps}>

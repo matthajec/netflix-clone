@@ -1,3 +1,4 @@
+import { useState, useContext, createContext } from 'react'
 import PropTypes from 'prop-types'
 import {
   Container,
@@ -9,11 +10,20 @@ import {
   Break
 } from './styles/opt-form';
 
-const OptForm = ({ children, ...restProps }) => (
-  <Container {...restProps}>{children}</Container>
-)
+const OptFormContext = createContext()
+
+const OptForm = ({ children, ...restProps }) => {
+  const [value, setValue] = useState('')
+
+  return (
+    <OptFormContext.Provider value={value, setValue}>
+      <Container {...restProps}>{children}</Container>
+    </OptFormContext.Provider>
+  )
+}
 
 OptForm.Input = ({ placeholder, ...restProps }) => (
+
   <InputContainer >
     <Input required={true} {...restProps} />
     <InputLabel>{placeholder}</InputLabel>

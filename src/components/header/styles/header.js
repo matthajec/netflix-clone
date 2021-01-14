@@ -49,7 +49,6 @@ export const LogoLink = styled(RouterLink)``
 export const ButtonLink = styled(RouterLink)`
   display: block;
   background-color: #e50914;
-  width: 84px;
   height: fit-content;
   color: white;
   border: 0;
