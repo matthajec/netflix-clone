@@ -3,12 +3,14 @@ import { Home, Signin, Signup, Browse, PageNotFound } from './pages'
 import * as ROUTES from './constants/routes'
 import { useAuthListener } from './hooks'
 import { IsUserRedirect, ProtectedRoute } from './helpers/routes'
+import { ScrollToTop } from './helpers/scroll-to-top'
 
 export function App() {
   const user = useAuthListener()
 
   return (
     <Router>
+      <ScrollToTop />
       <Switch>
         <IsUserRedirect user={user} loggedInPath={ROUTES.BROWSE} path={ROUTES.SIGN_IN}>
           <Signin />

@@ -22,6 +22,8 @@ It was a tutorial from [scrimba](scrimba.com), however due to Scrimba's interact
 * Added a 404 page
 * Added the ability to sign in anonymously
 * Made the name on the 'Who's Watching?' page match the first name chosen at sign up
+* Replaced the sign in button link on the sign in page with a sign up button link
+* Made the CTA "GET STARTED" functional
 
 
 ## What I learned
@@ -31,6 +33,7 @@ It was a tutorial from [scrimba](scrimba.com), however due to Scrimba's interact
 * Using custom hooks as a way to send queries
 * To use context more often (lots of times I tried to avoid using context except for large, application wide data, but I realize that it can be an imporant tool for smaller things, esspecially when creating modular components)
 * Ways the think more dynamically, creating things in such a way that they can be more easily customized and reused with the same code
+* Passing state through react-router-dom
 
 ## Challenge(s)
 * Locking down the database. By default all writes were blocked and all reads were allowed, this isn't what you want from something like Netflix. To fix it I watched a video on Firebase Security Rules and then a video on Common Expression Language in the context of security, this allowed me to come up with my security rules. 
