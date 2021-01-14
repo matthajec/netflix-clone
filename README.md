@@ -24,6 +24,7 @@ It was a tutorial from [scrimba](scrimba.com), however due to Scrimba's interact
 * Made the name on the 'Who's Watching?' page match the first name chosen at sign up
 * Replaced the sign in button link on the sign in page with a sign up button link
 * Made the CTA "GET STARTED" functional
+* Made the scroll position return to 0 on page change
 
 
 ## What I learned
@@ -38,14 +39,14 @@ It was a tutorial from [scrimba](scrimba.com), however due to Scrimba's interact
 ## Challenge(s)
 * Locking down the database. By default all writes were blocked and all reads were allowed, this isn't what you want from something like Netflix. To fix it I watched a video on Firebase Security Rules and then a video on Common Expression Language in the context of security, this allowed me to come up with my security rules. 
 
-    This (below) says for all documents allow a read operation if the ```request.auth != null```, blocking unauthenticated users from accessing data. It then says to allow write operations if the ```request.auth.uid == 'F4hjo4PGyjRQlZkxoK8Z23MRHSx2'```, only allowing operations from me, since that is my UID.
+    This (below) says for all documents allow a read operation if the ```request.auth != null```, blocking unauthenticated users from accessing data. It then says to allow write operations if the ```request.auth.uid == 'my uuid here'```, only allowing operations from me, since that is my UID.
 
 
         service cloud.firestore {
           match /databases/{database}/documents {
             match /{document=**} {
               allow read: if request.auth != null;
-              allow write: if request.auth.uid == 'F4hjo4PGyjRQlZkxoK8Z23MRHSx2';
+              allow write: if request.auth.uid == 'my uuid here';
             }
           }
         }
